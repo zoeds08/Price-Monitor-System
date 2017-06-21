@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -12,7 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 
 
-public class CategoryCrawler {
+public class CategoryCrawler{
 
     static final String d_user_name = "root";
     static final String d_password = "19930823";
@@ -21,63 +22,52 @@ public class CategoryCrawler {
     static final MySQLAccess sqlAccess = new MySQLAccess(d_server_name,d_db_name,d_user_name,d_password);
 
     private static final String Books_QUERY_URL = "https://www.amazon.com/b/ref=sr_aj?node=283155&ajr=0";
-    private static final String Software_QUERY_URL = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dsoftware&field-keywords=";
+    private static final String Arts_QUERY_URL = "https://www.amazon.com/b/ref=sr_aj?node=2617941011&ajr=0";
+    private static final String Apps_Games_QUERY_URL = "https://www.amazon.com/b/ref=sr_aj?node=2350149011&ajr=0";
+    private static final String Software_URL = "https://www.amazon.com/b/ref=sr_aj?node=229534&ajr=0";
+
     private static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36";
-    //1-32
+
+
     private static final String Books_url = "https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dstripbooks&field-keywords=-1234567";
-    //1-17
-    private static final String Software_url = "https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dbeauty&field-keywords=-1234567";
-    static final String[] names = {"Books", "Software"};
-    static final String[] urls = {Books_QUERY_URL,Software_QUERY_URL};
+    private static final String Arts_url = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Darts-crafts&field-keywords=";
+    private static final String Apps_url = "https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dmobile-apps&field-keywords=-1234567";
+    private static final String Software_url = "https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dsoftware&field-keywords=-1234567";
+
+    static final String[] names = {"Books", "Arts, Crafts & Sewing", "Apps & Games", "Software"};
+    static final String[] urls = {Books_QUERY_URL,Apps_Games_QUERY_URL,Arts_QUERY_URL,Software_URL};
+    static final String[] selfs = {Books_url,Apps_url,Arts_url,Software_url};//with -1234567
+    static final int[] nums = {32,28,13,17};//items
+    static final int[] params = {5,5,2,7};//div params
 
     private static int index=1;
 
     public static void main(String[] args) throws Exception {
-        addBooks();
-        addSoftware();
+        for(int i=0;i<4;i++){
+            addCategory(i);
+        }
     }
 
-    public static void addBooks() throws Exception {
-        HashSet<String> all = new HashSet<>();
-        all.add(Books_url);
-        Document doc = Jsoup.connect(urls[0]).userAgent(USER_AGENT).timeout(1000).get();
-        for(int i=1;i<=32;i++){
-            HashSet<String> set = new HashSet<>();
-            Element ele = doc.select("#leftNav > ul:nth-child(5) > ul > div > li:nth-child("+String.valueOf(i)+") > span > a").first();
-            if(ele!=null){
-                String detailUrl = ele.attr("href");
-                System.out.println("detail url = " + detailUrl);
-                set.add(detailUrl);
-                all.add(detailUrl);
-                String name = doc.select("#leftNav > ul:nth-child(5) > ul > div > li:nth-child("+String.valueOf(i)+") > span > a > span").text();
-                System.out.println("category name = " + name);
-                Category category1 = new Category(index++, name, set,2);
-                sqlAccess.addProductData(category1);
-            }
-        }
-        Category books = new Category(index++, names[0],all,1);
-        sqlAccess.addProductData(books);
-    }
 
-    public static void addSoftware() throws Exception {
-        HashSet<String> all = new HashSet<>();
-        all.add(Software_url);
-        Document doc = Jsoup.connect(urls[1]).userAgent(USER_AGENT).timeout(1000).get();
-        for(int i=1;i<=17;i++){
-            HashSet<String> set = new HashSet<>();
-            Element ele = doc.select("#leftNav > ul:nth-child(7) > ul > div > li:nth-child("+String.valueOf(i)+") > span > a").first();
-            if(ele!=null){
-                String detailUrl = ele.attr("href");
-                System.out.println("detail url = " + detailUrl);
-                set.add(detailUrl);
-                all.add(detailUrl);
-                String name = doc.select("#leftNav > ul:nth-child(7) > ul > div > li:nth-child("+String.valueOf(i)+") > span > a > span").text();
-                System.out.println("category name = " + name);
-                Category category2 = new Category(index++, name, set,2);
-                sqlAccess.addProductData(category2);
+    public static void addCategory(int self) throws Exception {
+            HashSet<String> all = new HashSet<>();
+            all.add(selfs[self]);
+            Document doc = Jsoup.connect(urls[self]).userAgent(USER_AGENT).timeout(100000).get();
+            for (int i = 1; i <= nums[self]; i++) {
+                HashSet<String> set = new HashSet<>();
+                Element ele = doc.select("#leftNav > ul:nth-child("+ String.valueOf(params[self])+") > ul > div > li:nth-child(" + String.valueOf(i) + ") > span > a").first();
+                if (ele != null) {
+                    String detailUrl = ele.attr("href");
+                    System.out.println("detail url = " + detailUrl);
+                    set.add("https://www.amazon.com" + detailUrl);
+                    all.add("https://www.amazon.com" + detailUrl);
+                    String name = doc.select("#leftNav > ul:nth-child("+ String.valueOf(params[self])+") > ul > div > li:nth-child(" + String.valueOf(i) + ") > span > a > span").text();
+                    System.out.println("category name = " + name);
+                    Category category1 = new Category(index++, name, set, 2);
+                    sqlAccess.addProductData(category1);
+                }
             }
-        }
-        Category soft = new Category(index++, names[1],all,1);
-        sqlAccess.addProductData(soft);
+            Category books = new Category(index++, names[self], all, 1);
+            sqlAccess.addProductData(books);
     }
 }
