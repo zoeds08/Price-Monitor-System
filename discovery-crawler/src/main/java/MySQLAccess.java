@@ -102,7 +102,7 @@ public class MySQLAccess {
             product_info.setInt(1, category.categoryId);
             product_info.setString(2, category.category_name);
 
-            product_info.setString(3, category.product_list_url.toString());
+            product_info.setString(3, category.product_lists_url.toString());
             product_info.setInt(4, category.priority);
             product_info.executeUpdate();
         }

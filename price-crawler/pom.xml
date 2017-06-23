@@ -8,10 +8,6 @@
     <artifactId>price-crawler</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0.BUILD-SNAPSHOT</version>
-    <modules>
-        <module>discovery-crawler</module>
-    </modules>
-
 
     <dependencies>
         <!-- jsoup HTML parser library @ http://jsoup.org/ -->
