@@ -73,7 +73,7 @@ public class MySQLAccess {
     public void addProductData(Category category) throws Exception {
         Connection connect = null;
         boolean isExist = false;
-        String sql_string = "select categoryId from " + d_db_name + ".Category where id=" + category.categoryId;
+        String sql_string = "select categoryId from " + d_db_name + ".Category where id=" + category.getCategoryId();
         PreparedStatement product_info = null;
         try
         {
@@ -99,11 +99,11 @@ public class MySQLAccess {
                 + "values(?,?,?,?)";
         try {
             product_info = connect.prepareStatement(sql_string);
-            product_info.setInt(1, category.categoryId);
-            product_info.setString(2, category.category_name);
+            product_info.setInt(1, category.getCategoryId());
+            product_info.setString(2, category.getCategory_name());
 
-            product_info.setString(3, category.product_lists_url.toString());
-            product_info.setInt(4, category.priority);
+            product_info.setString(3, category.getProduct_lists_url());
+            product_info.setInt(4, category.getPriority());
             product_info.executeUpdate();
         }
         catch(SQLException e )

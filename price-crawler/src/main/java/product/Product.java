@@ -2,33 +2,24 @@ package product;
 
 import lombok.Data;
 
-@Data
-public class Product {
-    public int product_id;
-    public String category;
-    public String title;
-    public String detail_url;
-    public double price;
-    public double old_price;
-    public double percentage;
 
-    public Product(){}
+public class Product{
+    private String product_id;
+    private String category;
+    private String title;
+    private String detail_url;
+    private double price;
+    private double old_price;
+    private double percentage;
 
-    public Product(int product_id, String category, String title, String detail_url, double price, double old_price, double percentage) {
-        this.product_id = product_id;
-        this.category = category;
-        this.title = title;
-        this.detail_url = detail_url;
-        this.price = price;
-        this.old_price = old_price;
-        this.percentage = percentage;
+    public Product(){
     }
 
-    public int getProduct_id() {
+    public String getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(int product_id) {
+    public void setProduct_id(String product_id) {
         this.product_id = product_id;
     }
 
@@ -77,6 +68,16 @@ public class Product {
     }
 
     public void setPercentage(double percentage) {
+        this.percentage = percentage;
+    }
+
+    public Product(String product_id, String category, String title, String detail_url, double price, double old_price, double percentage) {
+        this.product_id = product_id;
+        this.category = category;
+        this.title = title;
+        this.detail_url = detail_url;
+        this.price = price;
+        this.old_price = old_price;
         this.percentage = percentage;
     }
 }

@@ -21,6 +21,7 @@
     <bytecodeTargetLevel>
       <module name="discovery-crawler" target="1.8" />
       <module name="price-crawler" target="1.8" />
+      <module name="product-crawler" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

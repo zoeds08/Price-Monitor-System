@@ -1,7 +1,6 @@
 package crawler;
 
 
-import com.rabbitmq.client.Channel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -27,23 +26,19 @@ public class ProductCrawler {
     private List<String> urlList;
     private List<String> titleList;
     private List<String> priceList;
+    private List<String> priceList2;
     private HashSet crawledUrl;
-    private Channel errorChannel;
-    private String errorChannelName;
 
     BufferedWriter logBFWriter;
 
-    private int id = 1;
+    private int id = 0;
     private int index = 0;
 
-    public ProductCrawler(String proxy_file, Channel errChannel, String errChannelName) {
+    public ProductCrawler(String proxy_file) {
         crawledUrl = new HashSet();
         initProxyList(proxy_file);
 
         initHtmlSelector();
-
-        errorChannel = errChannel;
-        errorChannelName = errChannelName;
     }
 
 
@@ -51,7 +46,6 @@ public class ProductCrawler {
     //normalizedUrl: https://www.amazon.com/KNEX-Model-Building-Set-Engineering/dp/B00HROBJXY
     private String normalizeUrl(String url) {
         int i = url.indexOf("ref");
-        System.out.println("ref index: " + i);
         String normalizedUrl = url.substring(0, i - 1);
         return normalizedUrl;
     }
@@ -98,35 +92,25 @@ public class ProductCrawler {
 
         priceList = new ArrayList<String>();
         //#refinements > div.categoryRefinementsSection > ul.forExpando > li:nth-child(1) > a > span.boldRefinementLink
+//         priceList.add(" #a-autoid-" + 0 + "-announce > span");//Arts
+
+        priceList.add(" > div > div:nth-child(4) > div:nth-child(1) > a > span");
+        priceList.add(" > div > div:nth-child(7) > div:nth-child(1) > a > span");
+        priceList.add(" > div > div:nth-child(4) > a > span.a-color-base.sx-zero-spacing");
+        priceList.add(" > div > div.a-row.a-spacing-top-small > div:nth-child(2) > a > span");
         priceList.add(" > div > div > div > div.a-fixed-left-grid-col.a-col-right > div:nth-child(2) > div.a-column.a-span7 > div:nth-child(2) > a > span");
         priceList.add(" > div > div > div > div.a-fixed-left-grid-col.a-col-right > div:nth-child(3) > div.a-column.a-span7 > div:nth-child(2) > a > span");
-//        priceList.add(" #a-autoid-" + 0 + "-announce > span");//Arts
-        priceList.add(" > div > div:nth-child(4) > a > span.a-color-base.sx-zero-spacing");
+//
         priceList.add(" > div > div > div > div.a-fixed-left-grid-col.a-col-right > div:nth-child(4) > div.a-column.a-span7 > div.a-row.a-spacing-none > a > span");
         priceList.add(" > div > div > div > div.a-fixed-left-grid-col.a-col-right > div:nth-child(2) > div.a-column.a-span7 > table > tbody > tr.a-spacing-none.s-table-twister-row-no-border.s-table-twister-row > td:nth-child(2) > div > a > span");
         priceList.add(" > div > div > div > div.a-fixed-left-grid-col.a-col-right > div:nth-child(2) > div.a-column.a-span7 > table > tbody > tr:nth-child(3) > td:nth-child(2) > div > a > span");
-        priceList.add(" > div > div > div > div.a-fixed-left-grid-col.a-col-right > div:nth-child(2) > div.a-column.a-span7 > div.a-row.a-spacing-top-mini.a-spacing-mini > div:nth-child(2) > a > span.a-size-base.a-color-base");
-        priceList.add(" > div > div > div > div.a-fixed-left-grid-col.a-col-right > div:nth-child(2) > div.a-column.a-span7 > div.a-row.a-spacing-top-mini.a-spacing-mini > div > a > span.a-size-base.a-color-base");
+
+        priceList2 = new ArrayList<>();
+        priceList2.add(" > div > div > div > div.a-fixed-left-grid-col.a-col-right > div:nth-child(2) > div.a-column.a-span7 > div.a-row.a-spacing-top-mini.a-spacing-mini > div:nth-child(2) > a > span.a-size-base.a-color-base");
+        priceList2.add(" > div > div > div > div.a-fixed-left-grid-col.a-col-right > div:nth-child(2) > div.a-column.a-span7 > div.a-row.a-spacing-top-mini.a-spacing-mini > div > a > span.a-size-base.a-color-base");
 
 
         
-    }
-
-    private void initLog(String log_path) {
-        /*
-        try {
-            File log = new File(log_path);
-            // if file doesnt exists, then create it
-            if (!log.exists()) {
-                log.createNewFile();
-            }
-            FileWriter fw = new FileWriter(log.getAbsoluteFile());
-            logBFWriter = new BufferedWriter(fw);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
     }
 
     private void setProxy() {
@@ -176,12 +160,8 @@ public class ProductCrawler {
             Elements results = doc.select("li[data-asin]");
             System.out.println("num of results = " + results.size());
 
-
             for(int i = 0; i < results.size() ;i++) {
                 Product product = new Product();
-
-                product.product_id = id++;
-                product.category = category_name;
 
                 //detail url
                 for (String pathUrl : urlList) {
@@ -191,20 +171,19 @@ public class ProductCrawler {
                         String detail_url = ele.attr("href");
                         System.out.println("detail = " + detail_url);
                         String normalizedUrl = normalizeUrl(detail_url);
+                        product.setDetail_url(normalizedUrl);
+                        int temp = normalizedUrl.indexOf("dp");
+                        product.setProduct_id(normalizedUrl.substring(temp+3));
                         if(crawledUrl.contains(normalizedUrl)) {
                             String errMsg = "crawled url:" + normalizedUrl;
-                            errorChannel.basicPublish("", errorChannelName,null,errMsg.getBytes("UTF-8"));
-                            continue;
+                            System.out.println(errMsg);
                         }
                         crawledUrl.add(normalizedUrl);
                         System.out.println("normalized url  = " + normalizedUrl);
-                        product.detail_url = normalizedUrl;
                         break;
                     } else {
                         //logBFWriter.write("cannot parse detail for query:" + query + ", title: " + ad.title);
                         //logBFWriter.newLine();
-                        String errMsg = "cannot parse detail for one product of :" + category_name + ", title: " + product.title;
-                        errorChannel.basicPublish("", errorChannelName,null,errMsg.getBytes("UTF-8"));
                         continue;
                     }
                 }
@@ -215,12 +194,12 @@ public class ProductCrawler {
                     Element title_ele = doc.select(title_ele_path).first();
                     if(title_ele != null) {
                         System.out.println("title = " + title_ele.text());
-                        product.title = title_ele.text();
+                        product.setTitle(title_ele.text());
                         break;
                     }
                 }
 
-                if (product.title == "") {
+                if (product.getTitle() == "") {
                     logBFWriter.write("cannot parse title for one product of category: " + category_name);
                     logBFWriter.newLine();
                     continue;
@@ -228,54 +207,90 @@ public class ProductCrawler {
 
                 //price
                 for(String itemPrice: priceList){
-                    String path = "#result_"+Integer.toString(i)+ itemPrice;
-                    Element price_ele = doc.select(path).first();
-                    if(price_ele!=null){
-                        String price = price_ele.text();
-                        price = price.substring(1);
+                    String price_whole_path = "#result_"+Integer.toString(i)+ itemPrice +" > span > span";
+                    String price_fraction_path = "#result_"+Integer.toString(i)+ itemPrice +" > span > sup.sx-price-fractional";
+
+                    Element price_whole_ele = doc.select(price_whole_path).first();
+                    Element price_fraction_ele = doc.select(price_fraction_path).first();
+                    if(price_whole_ele != null || price_fraction_ele != null){
+                        if(price_whole_ele != null) {
+                            String price_whole = price_whole_ele.text();
+                            if (price_whole.contains(",")) {
+                                price_whole = price_whole.replaceAll(",","");
+                            }
+                            try {
+                                product.setPrice(Double.parseDouble(price_whole));
+                            } catch (NumberFormatException ne) {
+                                // TODO Auto-generated catch block
+                                ne.printStackTrace();
+                                //log
+                            }
+                        }
+                        if(price_fraction_ele != null) {
+                            //System.out.println("price fraction = " + price_fraction_ele.text());
+                            try {
+                                product.setPrice(product.getPrice() + Double.parseDouble(price_fraction_ele.text()) / 100.0);
+                            } catch (NumberFormatException ne) {
+                                ne.printStackTrace();
+                            }
+
+                        }
+                        break;
+                    }
+                }
+
+                if(product.getPrice()==0){
+                    for(String itemPrice: priceList2){
+                        String path = "#result_"+Integer.toString(i)+ itemPrice;
+                        Element price_ele = doc.select(path).first();
+                        if(price_ele!=null){
+                            String price = price_ele.text();
+                            price = price.substring(1);
+                            String[] splits = price.split(" ");
+                            if(splits.length>1) price = splits[0]+"."+splits[1];
+                            try {
+                                product.setPrice(Double.parseDouble(price));
+                            } catch (NumberFormatException ne) {
+                                // TODO Auto-generated catch block
+                                ne.printStackTrace();
+                                //log
+                            }
+                            System.out.println("price = " + product.getPrice() );
+                            break;
+                        }else {
+                            //logBFWriter.write("cannot parse detail for query:" + query + ", title: " + ad.title);
+                            //logBFWriter.newLine();
+                            continue;
+                        }
+                    }
+                }
+
+                if(product.getPrice()==0){
+                    String path2 = "#a-autoid-" + Integer.toString(i) + "-announce > span";
+                    Element price_ele2 = doc.select(path2).first();
+                    if(price_ele2!=null){
+                        String price = price_ele2.text();
                         String[] splits = price.split(" ");
                         if(splits.length>1) price = splits[0]+"."+splits[1];
                         try {
-                            product.price = Double.parseDouble(price);
+                            product.setPrice(Double.parseDouble(price));
                         } catch (NumberFormatException ne) {
                             // TODO Auto-generated catch block
                             ne.printStackTrace();
                             //log
                         }
-                        System.out.println("price = " + product.price );
-                        break;
+                        System.out.println("price = " + product.getPrice());
                     }else {
-                        //logBFWriter.write("cannot parse detail for query:" + query + ", title: " + ad.title);
-                        //logBFWriter.newLine();
-//                        String errMsg = "cannot parse price for one product of :" + category_name + ", title: " + product.title;
-//                        errorChannel.basicPublish("", errorChannelName,null,errMsg.getBytes("UTF-8"));
-                        continue;
+                        String errMsg = "cannot parse price for one product of :" + category_name + ", title: " + product.getTitle();
                     }
                 }
 
-                String path2 = "#a-autoid-" + Integer.toString(i) + "-announce > span";
-                Element price_ele2 = doc.select(path2).first();
-                if(price_ele2!=null){
-                    String price = price_ele2.text();
-                    String[] splits = price.split(" ");
-                    if(splits.length>1) price = splits[0]+"."+splits[1];
-                    try {
-                        product.price = Double.parseDouble(price);
-                    } catch (NumberFormatException ne) {
-                        // TODO Auto-generated catch block
-                        ne.printStackTrace();
-                        //log
-                    }
-                    System.out.println("price = " + product.price );
-                }else {
-                    String errMsg = "cannot parse price for one product of :" + category_name + ", title: " + product.title;
-                    errorChannel.basicPublish("", errorChannelName,null,errMsg.getBytes("UTF-8"));
-                }
+                product.setCategory(category_name);
 
-                product.old_price = 0;
-                product.percentage = 1;
+//                product.setOld_price(0);
+                product.setPercentage(1);
 
-                if(product.detail_url!=null){
+                if(product.getDetail_url()!=null){
                     products.add(product);
                 }
             }

@@ -116,7 +116,7 @@ public class MySQLAccess {
     public void addProductData(Product product) throws Exception {
         Connection connect = null;
         boolean isExist = false;
-        String sql_string = "select product_id from " + d_db_name + ".Product where product_id=" + product.product_id;
+        String sql_string = "select product_id from " + d_db_name + ".Product where product_id= '" + product.getProduct_id() + "'";
 
         PreparedStatement product_info = null;
         try
@@ -144,14 +144,14 @@ public class MySQLAccess {
                 + "values(?,?,?,?,?,?,?)";
         try {
             product_info = connect.prepareStatement(sql_string);
-            product_info.setInt(1, product.product_id);
-            product_info.setString(2, product.category);
+            product_info.setString(1, product.getProduct_id());
+            product_info.setString(2, product.getCategory());
 
-            product_info.setString(3, product.title);
-            product_info.setString(4, product.detail_url);
-            product_info.setDouble(5, product.price);
-            product_info.setDouble(6, product.old_price);
-            product_info.setDouble(7, product.percentage);
+            product_info.setString(3, product.getTitle());
+            product_info.setString(4, product.getDetail_url());
+            product_info.setDouble(5, product.getPrice());
+            product_info.setDouble(6, product.getOld_price());
+            product_info.setDouble(7, product.getPercentage());
 
             product_info.executeUpdate();
         }

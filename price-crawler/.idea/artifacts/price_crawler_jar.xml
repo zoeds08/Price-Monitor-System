@@ -2,7 +2,7 @@
   <artifact type="jar" name="price-crawler:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/price_crawler_jar</output-path>
     <root id="archive" name="price-crawler.jar">
-      <element id="module-output" name="price-crawler" />
+      <element id="module-output" name="product-crawler" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/后端/第七周codelab1/ProtobufLib/guava-20.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/后端/第七周codelab1/ProtobufLib/grpc-core-1.3.0.jar" path-in-jar="/" />

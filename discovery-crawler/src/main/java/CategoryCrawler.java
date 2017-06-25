@@ -23,15 +23,15 @@ public class CategoryCrawler{
 
     private static final String Books_QUERY_URL = "https://www.amazon.com/b/ref=sr_aj?node=283155&ajr=0";
     private static final String Arts_QUERY_URL = "https://www.amazon.com/b/ref=sr_aj?node=2617941011&ajr=0";
-    private static final String Apps_Games_QUERY_URL = "https://www.amazon.com/b/ref=sr_aj?node=2350149011&ajr=0";
+    private static final String Toys_QUERY_URL = "https://www.amazon.com/b/ref=sr_aj?node=165793011&ajr=0";
     private static final String Software_URL = "https://www.amazon.com/b/ref=sr_aj?node=229534&ajr=0";
 
     private static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36";
 
 
-    static final String[] names = {"Books", "Arts, Crafts & Sewing", "Apps & Games", "Software"};
-    static final String[] urls = {Books_QUERY_URL,Apps_Games_QUERY_URL,Arts_QUERY_URL,Software_URL};
-    static final int[] nums = {32,28,13,17};//items
+    static final String[] names = {"Books", "Toys & Games", "Arts, Crafts & Sewing", "Software"};
+    static final String[] urls = {Books_QUERY_URL,Toys_QUERY_URL,Arts_QUERY_URL,Software_URL};
+    static final int[] nums = {32,21,13,17};//items
     static final int[] params = {5,5,2,7};//div params
 
     private static int index=1;
