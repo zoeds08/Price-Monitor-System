@@ -5,18 +5,12 @@ import com.rabbitmq.client.*;
 import net.spy.memcached.MemcachedClient;
 
 import product.Product;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.concurrent.TimeoutException;
 
-@WebServlet(name = "/monitor")
-public class MonitorServlet extends HttpServlet{
+
+public class MonitorService {
 
     private static String memcacheServer = "127.0.0.1";
     private static int memcachePort = 11211;
@@ -35,7 +29,7 @@ public class MonitorServlet extends HttpServlet{
 
     private static ObjectMapper mapper = new ObjectMapper();
 
-    public static void main(String[] args) throws ServletException {
+    public static void main(String[] args){
         MemcachedClient cache = null;
         try {
             cache = new MemcachedClient(new InetSocketAddress(memcacheServer, memcachePort));
@@ -126,7 +120,4 @@ public class MonitorServlet extends HttpServlet{
         cache.set(key,EXP, value);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

@@ -287,7 +287,7 @@ public class ProductCrawler {
 
                 product.setCategory(category_name);
 
-//                product.setOld_price(0);
+                product.setOld_price(product.getPrice());
                 product.setPercentage(1);
 
                 if(product.getDetail_url()!=null){

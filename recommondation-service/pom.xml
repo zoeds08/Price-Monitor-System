@@ -89,7 +89,7 @@
                         <index>true</index>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>demo.DemoMain</mainClass>
+                            <mainClass>RecomApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

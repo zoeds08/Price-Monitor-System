@@ -28,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MySQLAccess.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MySQLAccess.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/MySQLAccess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1575">
-              <caret line="105" column="57" selection-start-line="105" selection-start-column="57" selection-end-line="105" selection-end-column="57" />
+            <state relative-caret-position="510">
+              <caret line="34" column="58" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="58" />
               <folding>
                 <marker date="1498286248000" expanded="true" signature="2202:2261" ph="select categ... Category" />
                 <marker date="1498286248000" expanded="true" signature="2733:2854" ph="insert into missingValue.Category... " />
@@ -41,7 +41,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CategoryCrawler.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CategoryCrawler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/CategoryCrawler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="375">
@@ -58,7 +58,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
               <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,8 +68,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+            <state relative-caret-position="585">
+              <caret line="39" column="21" selection-start-line="35" selection-start-column="8" selection-end-line="39" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -96,9 +98,9 @@
         <option value="$PROJECT_DIR$/src/main/java/ArtsRun.java" />
         <option value="$PROJECT_DIR$/src/main/java/CrawlerMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/CategoryCrawler.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Category.java" />
         <option value="$PROJECT_DIR$/src/main/java/MySQLAccess.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -121,8 +123,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="7" />
-    <option name="y" value="53" />
+    <option name="x" value="20" />
+    <option name="y" value="27" />
     <option name="width" value="1260" />
     <option name="height" value="669" />
   </component>
@@ -151,8 +153,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -695,16 +697,17 @@
       <updated>1497746845008</updated>
       <workItem from="1497746848622" duration="19348000" />
       <workItem from="1498014520633" duration="18900000" />
-      <workItem from="1498285115540" duration="792000" />
+      <workItem from="1498285115540" duration="2419000" />
+      <workItem from="1498437387354" duration="1473000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39040000" />
+    <option name="totallyTimeSpent" value="42140000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="7" y="53" width="1260" height="669" extended-state="1" />
-    <editor active="false" />
+    <frame x="20" y="27" width="1260" height="669" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -755,6 +758,45 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/MySQLAccess.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1498286248000" expanded="true" signature="2202:2261" ph="select categ... Category" />
+            <marker date="1498286248000" expanded="true" signature="2733:2854" ph="insert into missingValue.Category... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CategoryCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="25" column="105" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="105" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Category.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="21" selection-start-line="35" selection-start-column="8" selection-end-line="39" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MySQLAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1560">
           <caret line="104" column="64" selection-start-line="104" selection-start-column="64" selection-end-line="104" selection-end-column="64" />
           <folding>
@@ -778,7 +820,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -794,19 +838,32 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/BooksRun.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ArtsRun.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/CrawlerMain.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Category.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="21" selection-start-line="35" selection-start-column="8" selection-end-line="39" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MySQLAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="58" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="58" />
+          <folding>
+            <marker date="1498286248000" expanded="true" signature="2202:2261" ph="select categ... Category" />
+            <marker date="1498286248000" expanded="true" signature="2733:2854" ph="insert into missingValue.Category... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -816,17 +873,6 @@
           <caret line="25" column="105" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="105" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MySQLAccess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="105" column="57" selection-start-line="105" selection-start-column="57" selection-end-line="105" selection-end-column="57" />
-          <folding>
-            <marker date="1498286248000" expanded="true" signature="2202:2261" ph="select categ... Category" />
-            <marker date="1498286248000" expanded="true" signature="2733:2854" ph="insert into missingValue.Category... " />
           </folding>
         </state>
       </provider>
