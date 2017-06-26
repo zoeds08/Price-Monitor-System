@@ -44,7 +44,7 @@
       <file leaf-file-name="CategoryCrawler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/CategoryCrawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
+            <state relative-caret-position="150">
               <caret line="25" column="105" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="105" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -68,8 +68,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="21" selection-start-line="35" selection-start-column="8" selection-end-line="39" selection-end-column="21" />
+            <state relative-caret-position="274">
+              <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -698,12 +698,12 @@
       <workItem from="1497746848622" duration="19348000" />
       <workItem from="1498014520633" duration="18900000" />
       <workItem from="1498285115540" duration="2419000" />
-      <workItem from="1498437387354" duration="1473000" />
+      <workItem from="1498437387354" duration="1497000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42140000" />
+    <option name="totallyTimeSpent" value="42164000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="27" width="1260" height="669" extended-state="1" />
@@ -848,14 +848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="21" selection-start-line="35" selection-start-column="8" selection-end-line="39" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/MySQLAccess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -867,9 +859,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CategoryCrawler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
+        <state relative-caret-position="150">
           <caret line="25" column="105" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="105" />
           <folding>
             <element signature="imports" expanded="true" />

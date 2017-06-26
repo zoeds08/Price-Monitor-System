@@ -23,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
+            <state relative-caret-position="1057">
               <caret line="73" column="31" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="31" />
               <folding />
             </state>
@@ -71,7 +71,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MonitorService.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MonitorService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/monitor/MonitorService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -87,7 +87,6 @@
             <state relative-caret-position="1410">
               <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <marker date="1498286248000" expanded="true" signature="2331:2388" ph="select * fro... Product" />
                 <marker date="1498286248000" expanded="true" signature="3746:3846" ph="select produ... Product" />
                 <marker date="1498286248000" expanded="true" signature="4349:4504" ph="insert into missingValue.Product... " />
@@ -752,12 +751,12 @@
       <updated>1498243990074</updated>
       <workItem from="1498243993140" duration="24557000" />
       <workItem from="1498285121617" duration="12409000" />
-      <workItem from="1498449530091" duration="1087000" />
+      <workItem from="1498449530091" duration="1154000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38053000" />
+    <option name="totallyTimeSpent" value="38120000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="23" width="1260" height="760" extended-state="1" />
@@ -869,7 +868,6 @@
         <state relative-caret-position="1410">
           <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
             <marker date="1498286248000" expanded="true" signature="2331:2388" ph="select * fro... Product" />
             <marker date="1498286248000" expanded="true" signature="3746:3846" ph="select produ... Product" />
             <marker date="1498286248000" expanded="true" signature="4349:4504" ph="insert into missingValue.Product... " />
@@ -935,7 +933,6 @@
         <state relative-caret-position="2775">
           <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <marker date="1498286248000" expanded="true" signature="2331:2388" ph="select * fro... Product" />
             <marker date="1498286248000" expanded="true" signature="3746:3846" ph="select produ... Product" />
             <marker date="1498286248000" expanded="true" signature="4349:4504" ph="insert into missingValue.Product... " />
@@ -965,20 +962,11 @@
         <state relative-caret-position="1410">
           <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
             <marker date="1498286248000" expanded="true" signature="2331:2388" ph="select * fro... Product" />
             <marker date="1498286248000" expanded="true" signature="3746:3846" ph="select produ... Product" />
             <marker date="1498286248000" expanded="true" signature="4349:4504" ph="insert into missingValue.Product... " />
             <marker date="1498286248000" expanded="true" signature="5657:5749" ph="insert into missingValue.Product... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="73" column="31" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,6 +1010,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1057">
+          <caret line="73" column="31" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="31" />
           <folding />
         </state>
       </provider>
